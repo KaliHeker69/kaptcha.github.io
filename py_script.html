@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <title>PY Script</title>
+</head>
+<body>
+    <h1>Program</h1>
+    <py-script>
+        import pandas as pd
+        from sklearn.tree import DecisionTreeClassifier
+        area_code = int(input("Enter the area code(Urban = 1 and Rural = 0)"))
+        elec = float(input("Enter the amount of surplus solar energy produced: "))
+        appli = pd.read_csv("database.csv")
+        X = appli.drop(columns = ["Earnings"])
+        y = appli["Earnings"]
+        model = DecisionTreeClassifier()
+        model.fit(X, y)
+        predct = model.predict([[area_code, elec]])
+        print(predct)
+    </py-script>
+</body>
+</html>
